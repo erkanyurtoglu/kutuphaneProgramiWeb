@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c722f96d6308460e8bf003755c120da6" Name="Diagram1" ZoomLevel="102">
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBHAREKET" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBKITAP" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBPERSONEL" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBUYELER" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="icisleriBakanlıgıWebModel.FK_TBHAREKET_TBKITAP" ManuallyRouted="false" />
+        <AssociationConnector Association="icisleriBakanlıgıWebModel.FK_TBHAREKET_TBPERSONEL" ManuallyRouted="false" />
+        <AssociationConnector Association="icisleriBakanlıgıWebModel.FK_TBHAREKET_TBUYELER" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBILETISIM" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBDUYURULAR" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBMESAJ" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBDERGI" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="icisleriBakanlıgıWebModel.TBKAYITDISI" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,224 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBKITAP
+@{
+    ViewBag.Title = "kitapGetir";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Kitap Bilgilerini Güncelle</h2>
+    @using (Html.BeginForm("kitapGuncelle", "kitap", FormMethod.Post))
+    {
+        <div class="row g-3">
+            @Html.HiddenFor(k => k.demirbas)
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="eser">Eser</label>
+                    @Html.TextBoxFor(k => k.eser, new { @class = "form-control", placeholder = "Kitap adını giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="yazar">Yazar</label>
+                    @Html.TextBoxFor(k => k.yazar, new { @class = "form-control", placeholder = "Yazar adını giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sorumlular">Sorumlular</label>
+                    @Html.TextBoxFor(k => k.sorumlular, new { @class = "form-control", placeholder = "Sorumluları giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="demirbas">Demirbaş</label>
+                    @Html.TextBoxFor(k => k.demirbas, new { @class = "form-control", @readonly = "readonly", placeholder = "Demirbaş numarası" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="isbn">ISBN</label>
+                    @Html.TextBoxFor(k => k.isbn, new { @class = "form-control", placeholder = "ISBN numarası" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="yayinYeri">Yayın Yeri</label>
+                    @Html.TextBoxFor(k => k.yayinYeri, new { @class = "form-control", placeholder = "Yayın yerini giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="yayinlayan">Yayınlayan</label>
+                    @Html.TextBoxFor(k => k.yayinlayan, new { @class = "form-control", placeholder = "Yayınevi adını giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="matbaa">Matbaa</label>
+                    @Html.TextBoxFor(k => k.matbaa, new { @class = "form-control", placeholder = "Matbaa adını giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="kayitTarih">Kayıt Tarihi</label>
+                    <input type="date" class="form-control" name="kayitTarih" value="@(Model.kayitTarih.HasValue ? Model.kayitTarih.Value.ToString("yyyy-MM-dd") : "")" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="yayinTarih">Yayın Tarihi</label>
+                    <input type="date" class="form-control" name="yayinTarih" value="@(Model.yayinTarih.HasValue ? Model.yayinTarih.Value.ToString("yyyy-MM-dd") : "")" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="kopya">Kopya</label>
+                    @Html.TextBoxFor(k => k.kopya, new { @class = "form-control", placeholder = "Kopya sayısını giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cilt">Cilt</label>
+                    @Html.TextBoxFor(k => k.cilt, new { @class = "form-control", placeholder = "Cilt bilgilerini giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fizikselNiteleme">Fiziksel Niteleme</label>
+                    @Html.TextBoxFor(k => k.fizikselNiteleme, new { @class = "form-control", placeholder = "Fiziksel niteleme giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="altTur">Alt Tür</label>
+                    @Html.TextBoxFor(k => k.altTur, new { @class = "form-control", placeholder = "Alt türü giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="yerNumarasi">Yer Numarası</label>
+                    @Html.TextBoxFor(k => k.yerNumarasi, new { @class = "form-control", placeholder = "Yer numarası giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dilBir">Dil Bir</label>
+                    @Html.TextBoxFor(k => k.dilBir, new { @class = "form-control", placeholder = "Birinci dil" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="diliki">Dil İki</label>
+                    @Html.TextBoxFor(k => k.diliki, new { @class = "form-control", placeholder = "İkinci dil" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="temelGiris">Temel Giriş</label>
+                    @Html.TextBoxFor(k => k.temelGiris, new { @class = "form-control", placeholder = "Temel giriş bilgisi" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="aramaGrubu">Arama Grubu</label>
+                    @Html.TextBoxFor(k => k.aramaGrubu, new { @class = "form-control", placeholder = "Arama grubunu giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="saglama">Sağlama</label>
+                    @Html.TextBoxFor(k => k.saglama, new { @class = "form-control", placeholder = "Sağlama bilgisi" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="oda">Oda</label>
+                    @Html.TextBoxFor(k => k.oda, new { @class = "form-control", placeholder = "Oda bilgisi" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fotograf">Fotoğraf Linki</label>
+                    @Html.TextBoxFor(k => k.kitapResim, new { @class = "form-control", placeholder = "Fotoğraf linki giriniz" })
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-custom">Kitap Bilgilerini Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

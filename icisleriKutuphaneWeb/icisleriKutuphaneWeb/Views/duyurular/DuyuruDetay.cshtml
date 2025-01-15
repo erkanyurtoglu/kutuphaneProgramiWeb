@@ -1,0 +1,87 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBDUYURULAR
+@{
+    ViewBag.Title = "DuyuruDetay";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Duyurular</h2>
+    @using (Html.BeginForm("DuyuruGuncelle", "duyurular", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.ID) <!-- ID'yi saklamak için -->
+
+        <div class="row g-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Duyuru Kategorisi</label>
+                    @Html.TextBoxFor(m => m.kategori, new { @class = "form-control", placeholder = "Duyuru kategorisi" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Duyuru İçeriği</label>
+                    @Html.TextBoxFor(m => m.icerik, new { @class = "form-control", placeholder = "Duyuru içeriği" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Duyuru Tarihi</label>
+                    @Html.TextBoxFor(m => m.tarih, "{0:dd.MM.yyyy}", new { @class = "form-control", placeholder = "Duyuru tarihi" })
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-custom">Güncelle</button>
+        </div>
+    }
+</div>

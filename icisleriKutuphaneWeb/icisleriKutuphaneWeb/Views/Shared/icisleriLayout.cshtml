@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "icisleriLayout";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+        }
+
+        .red-strip {
+            position: fixed;
+            top: 0;
+            left: 240px;
+            height: 80px;
+            right: 0;
+            background-color: rgb(204, 0, 0);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10;
+            padding-right: 20px;
+            transition: left 0.5s;
+        }
+
+            .red-strip img {
+                position: absolute;
+                right: 20px;
+                height: 60px;
+            }
+
+        .sidebar {
+            height: 100vh;
+            width: 240px;
+            position: fixed;
+            z-index: 5;
+            top: 0;
+            left: 0;
+            background-color: rgb(19, 24, 62);
+            overflow-x: hidden;
+            padding-top: 16px;
+            transition: width 0.5s;
+        }
+
+            .sidebar.closed {
+                width: 0;
+            }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 18px;
+                color: #ffffff;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+        .main {
+            margin-left: 240px;
+            padding: 10px 20px;
+            transition: margin-left 0.5s;
+            margin-top: 80px;
+        }
+
+            .main.collapsed {
+                margin-left: 0;
+            }
+
+        .toggle-btn {
+            position: fixed;
+            top: 25px;
+            left: 240px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: left 0.5s;
+            z-index: 20;
+        }
+
+            .toggle-btn.collapsed {
+                left: 0;
+            }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red-strip" id="redStrip">
+        <div>DR. NAMIK GEDİK KÜTÜPHANESİ</div>
+        <img src="~/web/img/atatürk.jpeg" alt="Atatürk">
+    </div>
+
+    <div class="toggle-btn" id="toggleBtn">&#9776;</div>
+
+    <div class="sidebar" id="sidebar">
+        <img src="~/web/img/icisleriLogo.png" alt="Logo" width="220" height="62"
+             style="display: block; margin: 0 auto 20px auto;" />
+        <a href="/vitrin/IndexVitrin/">
+            <i class="fas fa-home"></i> &nbsp; Ana Sayfa
+        </a>
+        <a href="/kitap/IndexKitap/">
+            <i class="fas fa-book-open"></i> &nbsp; Kitap İşlemleri
+        </a>
+        <a href="/odunc/oduncVer/">
+            <i class="fas fa-arrow-right"></i> &nbsp; Ödünç Kitap Teslim
+        </a>
+        <a href="/odunc/IndexOdunc/">
+            <i class="fas fa-arrow-left"></i> &nbsp; Ödünç Kitap İade
+        </a>
+        <a href="/dergi/IndexDergi/">
+            <i class="fas fa-newspaper"></i> &nbsp; Dergi İşlemleri
+        </a>
+        <a href="/kayitDisi/IndexKayitDisi/">
+            <i class="fas fa-file-alt"></i> &nbsp; Kayıt Dışı İşlemler
+        </a>
+        <a href="/uye/IndexUye/">
+            <i class="fas fa-users"></i> &nbsp; Üye İşlemleri
+        </a>
+        <a href="/personel/IndexPersonel/">
+            <i class="fas fa-user-tie"></i> &nbsp; Personel İşlemleri
+        </a>
+        <a href="/islem/Indexislem/">
+            <i class="fas fa-history"></i> &nbsp; Geçmiş İşlemler
+        </a>
+        <a href="/duyurular/IndexDuyurular/">
+            <i class="fas fa-bullhorn"></i> &nbsp; Duyurular
+        </a>
+        <a href="/adminMesaj/adminYeniMesaj/">
+            <i class="fas fa-envelope"></i> &nbsp; Yeni Mesaj
+        </a>
+        <a href="/adminMesaj/IndexAdminMesaj/">
+            <i class="fas fa-inbox"></i> &nbsp; Gelen Mesajlar
+        </a>
+        <a href="/adminMesaj/adminGidenMesaj/">
+            <i class="fas fa-paper-plane"></i> &nbsp; Giden Mesajlar
+        </a>
+        <a href="/istatistik/Indexistatistik/">
+            <i class="fas fa-chart-bar"></i> &nbsp; İstatistikler
+        </a>
+        <a href="/istatistik/galeri/">
+            <i class="fas fa-images"></i> &nbsp; Galeri
+        </a>
+        <a href="#">
+            <i class="fas fa-sign-out-alt"></i> &nbsp; Çıkış
+        </a>
+    </div>
+
+
+    <div class="main" id="main">
+        @RenderBody()
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#toggleBtn').click(function () {
+                $('#sidebar').toggleClass('closed');
+                $('#main').toggleClass('collapsed');
+                $(this).toggleClass('collapsed');
+
+                // Kırmızı şeridin hizasını sidebar'a göre ayarla
+                if ($('#sidebar').hasClass('closed')) {
+                    $('#redStrip').css('left', '0');
+                } else {
+                    $('#redStrip').css('left', '240px');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

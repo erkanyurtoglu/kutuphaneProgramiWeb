@@ -1,0 +1,115 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBPERSONEL
+@{
+    ViewBag.Title = "personelEkle";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Yeni Personel Ekle</h2>
+    @using (Html.BeginForm("personelEkle", "personel", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelAdSoyad, "Ad Soyad")
+                    @Html.TextBoxFor(p => p.personelAdSoyad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelAdSoyad)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelTcNumarasi, "T.C. Kimlik Numarası")
+                    @Html.TextBoxFor(p => p.personelTcNumarasi, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelTcNumarasi)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelTelefon, "Telefon Numarası")
+                    @Html.TextBoxFor(p => p.personelTelefon, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelTelefon)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelEmail, "Email")
+                    @Html.TextBoxFor(p => p.personelEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelEmail)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelAdres, "Adres")
+                    @Html.TextBoxFor(p => p.personelAdres, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelAdres)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(p => p.personelUnvan, "Unvan")
+                    @Html.TextBoxFor(p => p.personelUnvan, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.personelUnvan)
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-custom">Personel Ekle</button>
+        </div>
+    }
+</div>

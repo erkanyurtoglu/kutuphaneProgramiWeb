@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="icisleriBakanlıgıWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBHAREKET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="uyeTcNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kitapDemirbas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelTcNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="alisTarih" Type="DateTime" Precision="0" />
+    <Property Name="iadeTarih" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="TBKITAP" Relationship="Self.FK_TBHAREKET_TBKITAP" FromRole="TBHAREKET" ToRole="TBKITAP" />
+    <NavigationProperty Name="TBPERSONEL" Relationship="Self.FK_TBHAREKET_TBPERSONEL" FromRole="TBHAREKET" ToRole="TBPERSONEL" />
+    <NavigationProperty Name="TBUYELER" Relationship="Self.FK_TBHAREKET_TBUYELER" FromRole="TBHAREKET" ToRole="TBUYELER" />
+    <Property Name="islemDurum" Type="Boolean" />
+    <Property Name="uyeGetirTarih" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBKITAP">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="eser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="demirbas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinlayan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="matbaa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fizikselNiteleme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yerNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitTarih" Type="DateTime" Precision="0" />
+    <Property Name="yayinTarih" Type="DateTime" Precision="0" />
+    <Property Name="kopya" Type="Int32" />
+    <Property Name="cilt" Type="Int32" />
+    <Property Name="dilBir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diliki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="durum" Type="Boolean" />
+    <NavigationProperty Name="TBHAREKET" Relationship="Self.FK_TBHAREKET_TBKITAP" FromRole="TBKITAP" ToRole="TBHAREKET" />
+    <Property Name="sorumlular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="altTur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="temelGiris" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aramaGrubu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="saglama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="konuBasliklari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kitabiKayitEden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notlar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="degisiklikYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kitapResim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBPERSONEL">
+    <Key>
+      <PropertyRef Name="personelTcNumarasi" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="personelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelTcNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="personelTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelKullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="personelSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBHAREKET" Relationship="Self.FK_TBHAREKET_TBPERSONEL" FromRole="TBPERSONEL" ToRole="TBHAREKET" />
+    <Property Name="personelUnvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBUYELER">
+    <Key>
+      <PropertyRef Name="uyeTcNumarasi" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="uyeAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeTcNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="uyeTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="calistigiBirim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isTelefonu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oduncNot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fotograf" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="uyeKullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBHAREKET" Relationship="Self.FK_TBHAREKET_TBUYELER" FromRole="TBUYELER" ToRole="TBHAREKET" />
+  </EntityType>
+  <Association Name="FK_TBHAREKET_TBKITAP">
+    <End Role="TBKITAP" Type="Self.TBKITAP" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBKITAP">
+        <PropertyRef Name="demirbas" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="kitapDemirbas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBHAREKET_TBPERSONEL">
+    <End Role="TBPERSONEL" Type="Self.TBPERSONEL" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPERSONEL">
+        <PropertyRef Name="personelTcNumarasi" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="personelTcNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBHAREKET_TBUYELER">
+    <End Role="TBUYELER" Type="Self.TBUYELER" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBUYELER">
+        <PropertyRef Name="uyeTcNumarasi" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="uyeTcNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="icisleriBakanlıgıWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBHAREKET" EntityType="Self.TBHAREKET" />
+    <EntitySet Name="TBKITAP" EntityType="Self.TBKITAP" />
+    <EntitySet Name="TBPERSONEL" EntityType="Self.TBPERSONEL" />
+    <EntitySet Name="TBUYELER" EntityType="Self.TBUYELER" />
+    <AssociationSet Name="FK_TBHAREKET_TBKITAP" Association="Self.FK_TBHAREKET_TBKITAP">
+      <End Role="TBKITAP" EntitySet="TBKITAP" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBHAREKET_TBPERSONEL" Association="Self.FK_TBHAREKET_TBPERSONEL">
+      <End Role="TBPERSONEL" EntitySet="TBPERSONEL" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBHAREKET_TBUYELER" Association="Self.FK_TBHAREKET_TBUYELER">
+      <End Role="TBUYELER" EntitySet="TBUYELER" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+    <EntitySet Name="TBILETISIM" EntityType="icisleriBakanlıgıWebModel.TBILETISIM" />
+    <EntitySet Name="TBDUYURULAR" EntityType="icisleriBakanlıgıWebModel.TBDUYURULAR" />
+    <EntitySet Name="TBMESAJ" EntityType="icisleriBakanlıgıWebModel.TBMESAJ" />
+    <EntitySet Name="TBDERGI" EntityType="icisleriBakanlıgıWebModel.TBDERGI" />
+    <EntitySet Name="TBKAYITDISI" EntityType="icisleriBakanlıgıWebModel.TBKAYITDISI" />
+  </EntityContainer>
+  <EntityType Name="TBILETISIM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="mesaj" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBDUYURULAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="icerik" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="tarih" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TBMESAJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gonderen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="alici" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="icerik" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="tarih" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBDERGI">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sorumlular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="demirbas" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="issn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinlayan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="matbaa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fizikselNiteleme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="altTur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitTarih" Type="DateTime" Precision="0" />
+    <Property Name="yayinTarih" Type="DateTime" Precision="0" />
+    <Property Name="kopya" Type="Int32" />
+    <Property Name="dilBir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diliki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="temelGiris" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aramaGrubu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sekil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sureliAyrinti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URLadres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MarcEkGiris" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBKAYITDISI">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sorumlular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="demirbas" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isbn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinYeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayinlayan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="matbaa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fizikselNiteleme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="altTur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yerNumarasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitTarih" Type="DateTime" Precision="0" />
+    <Property Name="yayinTarih" Type="DateTime" Precision="0" />
+    <Property Name="kopya" Type="Int32" />
+    <Property Name="cilt" Type="Int32" />
+    <Property Name="dilBir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diliki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="temelGiris" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aramaGrubu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="saglama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="konuBasliklari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kitabiKayitEden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="degisiklikYapan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notlar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="icisleriBakanlıgıWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBDERGI">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eser" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sorumlular" Type="nvarchar" MaxLength="50" />
+    <Property Name="demirbas" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="issn" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinYeri" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinlayan" Type="nvarchar" MaxLength="50" />
+    <Property Name="matbaa" Type="nvarchar" MaxLength="50" />
+    <Property Name="fizikselNiteleme" Type="nvarchar" MaxLength="50" />
+    <Property Name="altTur" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitTarih" Type="date" />
+    <Property Name="yayinTarih" Type="date" />
+    <Property Name="kopya" Type="int" />
+    <Property Name="dilBir" Type="nvarchar" MaxLength="50" />
+    <Property Name="diliki" Type="nvarchar" MaxLength="50" />
+    <Property Name="temelGiris" Type="nvarchar" MaxLength="50" />
+    <Property Name="aramaGrubu" Type="nvarchar" MaxLength="50" />
+    <Property Name="oda" Type="nvarchar" MaxLength="50" />
+    <Property Name="durum" Type="nvarchar" MaxLength="50" />
+    <Property Name="sekil" Type="nvarchar" MaxLength="50" />
+    <Property Name="baslik" Type="nvarchar" MaxLength="50" />
+    <Property Name="sureliAyrinti" Type="nvarchar" MaxLength="50" />
+    <Property Name="URLadres" Type="nvarchar" MaxLength="50" />
+    <Property Name="MarcEkGiris" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBDUYURULAR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori" Type="nvarchar" MaxLength="50" />
+    <Property Name="icerik" Type="nvarchar" MaxLength="250" />
+    <Property Name="tarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBHAREKET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeTcNumarasi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kitapDemirbas" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelTcNumarasi" Type="nvarchar" MaxLength="50" />
+    <Property Name="alisTarih" Type="date" />
+    <Property Name="iadeTarih" Type="date" />
+    <Property Name="uyeGetirTarih" Type="date" />
+    <Property Name="islemDurum" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBILETISIM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="konu" Type="nvarchar" MaxLength="100" />
+    <Property Name="mesaj" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="TBKAYITDISI">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eser" Type="nvarchar" MaxLength="50" />
+    <Property Name="yazar" Type="nvarchar" MaxLength="50" />
+    <Property Name="sorumlular" Type="nvarchar" MaxLength="50" />
+    <Property Name="demirbas" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isbn" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinYeri" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinlayan" Type="nvarchar" MaxLength="50" />
+    <Property Name="matbaa" Type="nvarchar" MaxLength="50" />
+    <Property Name="fizikselNiteleme" Type="nvarchar" MaxLength="50" />
+    <Property Name="altTur" Type="nvarchar" MaxLength="50" />
+    <Property Name="yerNumarasi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitTarih" Type="date" />
+    <Property Name="yayinTarih" Type="date" />
+    <Property Name="kopya" Type="int" />
+    <Property Name="cilt" Type="int" />
+    <Property Name="dilBir" Type="nvarchar" MaxLength="50" />
+    <Property Name="diliki" Type="nvarchar" MaxLength="50" />
+    <Property Name="temelGiris" Type="nvarchar" MaxLength="50" />
+    <Property Name="aramaGrubu" Type="nvarchar" MaxLength="50" />
+    <Property Name="saglama" Type="nvarchar" MaxLength="50" />
+    <Property Name="oda" Type="nvarchar" MaxLength="50" />
+    <Property Name="konuBasliklari" Type="nvarchar" MaxLength="50" />
+    <Property Name="kitabiKayitEden" Type="nvarchar" MaxLength="50" />
+    <Property Name="degisiklikYapan" Type="nvarchar" MaxLength="50" />
+    <Property Name="notlar" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBKITAP">
+    <Key>
+      <PropertyRef Name="demirbas" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eser" Type="nvarchar" MaxLength="50" />
+    <Property Name="yazar" Type="nvarchar" MaxLength="50" />
+    <Property Name="sorumlular" Type="nvarchar" MaxLength="50" />
+    <Property Name="demirbas" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isbn" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinYeri" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayinlayan" Type="nvarchar" MaxLength="50" />
+    <Property Name="matbaa" Type="nvarchar" MaxLength="50" />
+    <Property Name="fizikselNiteleme" Type="nvarchar" MaxLength="50" />
+    <Property Name="altTur" Type="nvarchar" MaxLength="50" />
+    <Property Name="yerNumarasi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitTarih" Type="date" />
+    <Property Name="yayinTarih" Type="date" />
+    <Property Name="kopya" Type="int" />
+    <Property Name="cilt" Type="int" />
+    <Property Name="dilBir" Type="nvarchar" MaxLength="50" />
+    <Property Name="diliki" Type="nvarchar" MaxLength="50" />
+    <Property Name="temelGiris" Type="nvarchar" MaxLength="50" />
+    <Property Name="aramaGrubu" Type="nvarchar" MaxLength="50" />
+    <Property Name="saglama" Type="nvarchar" MaxLength="50" />
+    <Property Name="oda" Type="nvarchar" MaxLength="50" />
+    <Property Name="konuBasliklari" Type="nvarchar" MaxLength="50" />
+    <Property Name="kitabiKayitEden" Type="nvarchar" MaxLength="50" />
+    <Property Name="degisiklikYapan" Type="nvarchar" MaxLength="50" />
+    <Property Name="notlar" Type="nvarchar" MaxLength="50" />
+    <Property Name="durum" Type="bit" />
+    <Property Name="kitapResim" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBMESAJ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gonderen" Type="nvarchar" MaxLength="50" />
+    <Property Name="alici" Type="nvarchar" MaxLength="50" />
+    <Property Name="konu" Type="nvarchar" MaxLength="100" />
+    <Property Name="icerik" Type="nvarchar" MaxLength="500" />
+    <Property Name="tarih" Type="date" />
+  </EntityType>
+  <EntityType Name="TBPERSONEL">
+    <Key>
+      <PropertyRef Name="personelTcNumarasi" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personelAdSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelTcNumarasi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="personelTelefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelAdres" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelUnvan" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelKullaniciAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="personelSifre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBUYELER">
+    <Key>
+      <PropertyRef Name="uyeTcNumarasi" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uyeAdSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="uyeTcNumarasi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="uyeTelefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="uyeEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="uyeAdres" Type="nvarchar" MaxLength="50" />
+    <Property Name="calistigiBirim" Type="nvarchar" MaxLength="50" />
+    <Property Name="unvan" Type="nvarchar" MaxLength="50" />
+    <Property Name="isTelefonu" Type="nvarchar" MaxLength="50" />
+    <Property Name="durum" Type="nvarchar" MaxLength="50" />
+    <Property Name="oduncNot" Type="nvarchar" MaxLength="50" />
+    <Property Name="fotograf" Type="nvarchar" MaxLength="300" />
+    <Property Name="uyeKullaniciAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="uyeSifre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_TBHAREKET_TBKITAP">
+    <End Role="TBKITAP" Type="Self.TBKITAP" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBKITAP">
+        <PropertyRef Name="demirbas" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="kitapDemirbas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBHAREKET_TBPERSONEL">
+    <End Role="TBPERSONEL" Type="Self.TBPERSONEL" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBPERSONEL">
+        <PropertyRef Name="personelTcNumarasi" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="personelTcNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBHAREKET_TBUYELER">
+    <End Role="TBUYELER" Type="Self.TBUYELER" Multiplicity="0..1" />
+    <End Role="TBHAREKET" Type="Self.TBHAREKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBUYELER">
+        <PropertyRef Name="uyeTcNumarasi" />
+      </Principal>
+      <Dependent Role="TBHAREKET">
+        <PropertyRef Name="uyeTcNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="icisleriBakanlıgıWebModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBDERGI" EntityType="Self.TBDERGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBDUYURULAR" EntityType="Self.TBDUYURULAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBHAREKET" EntityType="Self.TBHAREKET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBILETISIM" EntityType="Self.TBILETISIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBKAYITDISI" EntityType="Self.TBKAYITDISI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBKITAP" EntityType="Self.TBKITAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBMESAJ" EntityType="Self.TBMESAJ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBPERSONEL" EntityType="Self.TBPERSONEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBUYELER" EntityType="Self.TBUYELER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBHAREKET_TBKITAP" Association="Self.FK_TBHAREKET_TBKITAP">
+      <End Role="TBKITAP" EntitySet="TBKITAP" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBHAREKET_TBPERSONEL" Association="Self.FK_TBHAREKET_TBPERSONEL">
+      <End Role="TBPERSONEL" EntitySet="TBPERSONEL" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBHAREKET_TBUYELER" Association="Self.FK_TBHAREKET_TBUYELER">
+      <End Role="TBUYELER" EntitySet="TBUYELER" />
+      <End Role="TBHAREKET" EntitySet="TBHAREKET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,31 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBHAREKET>
+@{
+    ViewBag.Title = "uyeKitapGecmis";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<h2>...</h2>
+<br />
+<table class="table table-danger">
+    <tr>
+        <th>Eser</th>
+        <th>Yazar</th>
+        <th>Yayınlayan</th>
+        <th>Personel</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.TBKITAP.eser</td>
+            <td>@x.TBKITAP.yazar</td>
+            <td>@x.TBKITAP.yayinlayan</td>
+            <td>@x.TBPERSONEL.personelAdSoyad</td>
+            <td>@Convert.ToDateTime(x.alisTarih).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.uyeGetirTarih).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+
+</table>

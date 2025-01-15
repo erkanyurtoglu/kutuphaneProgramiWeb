@@ -1,0 +1,47 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBMESAJ>
+@{
+    ViewBag.Title = "adminGidenMesaj";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<!-- Giden Mesajlar Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle text-end" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3">Alıcı</th>
+                <th class="p-3">Konu</th>
+                <th class="p-3">Mesaj</th>
+                <th class="p-3">Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mesaj in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3 text-end">@mesaj.alici</td>
+                    <td class="p-3 text-end">@mesaj.konu</td>
+                    <td class="p-3 text-end">@mesaj.icerik</td>
+                    <td class="p-3 text-end">@Convert.ToDateTime(mesaj.tarih).ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexAdminMesaj", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+

@@ -1,0 +1,55 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity;
+@model List<TBDUYURULAR>
+@{
+    ViewBag.Title = "IndexDuyurular";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+
+
+<!-- Duyurular Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle text-end" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3">Kategori</th>
+                <th class="p-3">Tarih</th>
+                <th class="p-3">İşlemler</th>
+                <th class="p-3">Detaylar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var duyurular in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3 text-end">@duyurular.kategori</td>
+                    <td class="p-3 text-end">@Convert.ToDateTime(duyurular.tarih).ToString("dd/MM/yyyy")</td>
+                    <td class="p-3 text-end">
+                        <a href="@Url.Action("DuyuruSil", "duyurular", new { id = duyurular.ID })" class="btn btn-danger btn-sm shadow rounded-pill">
+                            Sil
+                        </a>
+                    </td>
+                    <td class="p-3 text-end">
+                        <a href="@Url.Action("DuyuruDetay", "duyurular", new { id = duyurular.ID })" class="btn btn-info btn-sm shadow rounded-pill">
+                            Detaylar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexDuyurular", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<a href="@Url.Action("YeniDuyuru", "duyurular")" class="btn btn-primary">Yeni Duyuru Ekle</a>

@@ -1,0 +1,117 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity;
+@model List<TBUYELER>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kayıt Ekranı</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Kayıt Ekranı Responsive web template, Bootstrap Web Templates, Flat Web Templates" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700" rel="stylesheet">
+    <link href="~/webregister/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/webregister/css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+</head>
+<body>
+    <section class="register">
+        <div class="register-full">
+            <div class="register-left">
+                <div class="register">
+                    <div class="logo">
+                        <a href="#"><span class="fa fa-graduation-cap" aria-hidden="true"></span></a>
+                    </div>
+                    <h1>DR. NAMIK GEDİK KÜTÜPHANESİ</h1>
+                    <div class="content3">
+                        <ul>
+                            <li><a class="" href="/Login/GirisYap/">Giriş Yap</a></li>
+                            <li><a class="read" href="/Vitrin/IndexVitrin/">Siteye Git</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="register-right">
+                <div class="register-in">
+                    <h2><span class="fa fa-pencil"></span>Kayıt Ekranı</h2>
+                    <div class="register-form">
+                        <form action="/KayitOl/Kayit" method="post">
+                            <div class="fields-grid">
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="uyeAdSoyad" required="">
+                                    <label>Ad Soyad:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="tel" name="uyeTcNumarasi" required="">
+                                    <label>T.C. Kimlik Numarası:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="tel" name="uyeTelefon" required="">
+                                    <label>Telefon:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="email" name="uyeEmail" required="">
+                                    <label>Email:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="uyeAdres" required="">
+                                    <label>Adres:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="calistigiBirim" required="">
+                                    <label>Çalıştığı Birim:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input agile-styled-input-top">
+                                    <input type="text" name="unvan" required="">
+                                    <label>Ünvan:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="tel" name="isTelefonu" required="">
+                                    <label>İş Telefonu:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="text" name="durum" value="Aktif" readonly>
+                                    <label for="durum">Durum:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="text" name="uyeKullaniciAd" required="">
+                                    <label>Kullanıcı Adı:</label>
+                                    <span></span>
+                                </div>
+                                <div class="styled-input">
+                                    <input type="password" name="uyeSifre" required="">
+                                    <label>Şifre:</label>
+                                    <span></span>
+                                </div>
+                                <div class="clear"> </div>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="checkbox" checked>
+                                    <i></i>Kabul ediyorum.<a href="#"> Şartları okudum.</a>
+                                </label>
+                            </div>
+                            <input type="submit" value="Kayıt Ol">
+                        </form>
+                    </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </section>
+</body>
+</html>

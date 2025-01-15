@@ -1,0 +1,28 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity;
+@model List<TBDUYURULAR>
+@{
+    ViewBag.Title = "Duyurular";
+    Layout = "~/Views/Shared/uyePanel.cshtml";
+}
+
+<h2>Duyurular Sayfası</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori</th>
+        <th>İçerik</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var duyurular in Model)
+    {
+        <tr>
+            <td>@duyurular.kategori</td>
+            <td>@duyurular.icerik</td>
+            <td>@Convert.ToDateTime(duyurular.tarih).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+
+

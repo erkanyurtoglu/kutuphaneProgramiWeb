@@ -1,0 +1,121 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBHAREKET
+@{
+    ViewBag.Title = "odunciade";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Geçmiş İşlemler</h2>
+    @using (Html.BeginForm("oduncGuncelle", "odunc", FormMethod.Post))
+    {
+        @Html.HiddenFor(k => k.ID) <!-- Gizli alan ID'yi ekleyin -->
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Eser</label>
+                    @Html.TextBoxFor(k => k.TBKITAP.eser, new { @class = "form-control", @readonly = "readonly", placeholder = "Eser adı" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Yazar</label>
+                    @Html.TextBoxFor(k => k.TBKITAP.yazar, new { @class = "form-control", @readonly = "readonly", placeholder = "Yazar adı" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Demirbaş</label>
+                    @Html.TextBoxFor(k => k.TBKITAP.demirbas, new { @class = "form-control", @readonly = "readonly", placeholder = "Demirbaş numarası" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Yayınlayan</label>
+                    @Html.TextBoxFor(k => k.TBKITAP.yayinlayan, new { @class = "form-control", @readonly = "readonly", placeholder = "Yayınlayan" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Üye Ad Soyad</label>
+                    @Html.TextBoxFor(k => k.TBUYELER.uyeAdSoyad, new { @class = "form-control", @readonly = "readonly", placeholder = "Üye adı soyadı" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Personel Ad Soyad</label>
+                    @Html.TextBoxFor(k => k.TBPERSONEL.personelAdSoyad, new { @class = "form-control", @readonly = "readonly", placeholder = "Personel adı soyadı" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Alış Tarihi</label>
+                    @Html.TextBoxFor(k => k.alisTarih, "{0:dd.MM.yyyy}", new { @class = "form-control", @readonly = "readonly", placeholder = "Alış tarihi" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>İade Tarihi</label>
+                    @Html.TextBoxFor(k => k.iadeTarih, "{0:dd.MM.yyyy}", new { @class = "form-control", @readonly = "readonly", placeholder = "İade tarihi" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Üyenin Getirdiği Tarih</label>
+                    <input type="text" class="form-control" name="uyeGetirTarih" value="@DateTime.Now.ToShortDateString()" readonly />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group text-center mt-4">
+            <button type="submit" class="btn btn-custom">Kitabı İade Al</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,86 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBDERGI>
+
+@{
+    ViewBag.Title = "IndexDergi";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<!-- Arama kutusu için form -->
+<div style="margin-bottom:15px; margin-top:15px;">
+    @using (Html.BeginForm("IndexDergi", "dergi", FormMethod.Get))
+    {
+        <input type="text" name="search" class="form-control" placeholder="Aramak istediğiniz dergi bilgisini giriniz..." value="@ViewBag.SearchTerm" />
+        <button type="submit" class="btn btn-primary" style="margin-top:5px;">Ara</button>
+    }
+</div>
+
+<!-- Dergi Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3 text-left">
+                    <a href="@Url.Action("IndexDergi", new { sortColumn = "eser", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Dergi Adı
+                        @if (ViewBag.SortColumn == "eser")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3 text-left">
+                    <a href="@Url.Action("IndexDergi", new { sortColumn = "yayinYeri", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Yayın Yeri
+                        @if (ViewBag.SortColumn == "yayinYeri")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3 text-left">
+                    <a href="@Url.Action("IndexDergi", new { sortColumn = "issn", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        ISSN
+                        @if (ViewBag.SortColumn == "issn")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3 text-left">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dergi in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3 text-left">@dergi.eser</td>
+                    <td class="p-3 text-left">@dergi.yayinYeri</td>
+                    <td class="p-3 text-left">@dergi.issn</td>
+                    <td class="p-3 text-left">
+                        <a href="@Url.Action("dergiGetir", "dergi", new { demirbas = dergi.demirbas })" class="btn btn-info btn-sm me-2 shadow rounded-pill">
+                            <i class="bi bi-pencil-square"></i> Detay
+                        </a>
+                        <a href="@Url.Action("dergiSil", "dergi", new { demirbas = dergi.demirbas })" class="btn btn-danger btn-sm shadow rounded-pill">
+                            <i class="bi bi-trash"></i> Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexDergi", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<a href="@Url.Action("dergiEkle", "dergi")" class="btn btn-primary">Yeni Dergi Ekle</a>

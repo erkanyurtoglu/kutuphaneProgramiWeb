@@ -1,0 +1,147 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBUYELER
+@{
+    ViewBag.Title = "uyeGetir";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Üye Bilgilerini Güncelle</h2>
+    @using (Html.BeginForm("uyeGuncelle", "uye", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(u => u.uyeTcNumarasi)
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeAdSoyad">Ad Soyad</label>
+                    @Html.TextBoxFor(u => u.uyeAdSoyad, new { @class = "form-control", placeholder = "Ad Soyad giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeTelefon">Telefon</label>
+                    @Html.TextBoxFor(u => u.uyeTelefon, new { @class = "form-control", placeholder = "Telefon numarası giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeEmail">Email</label>
+                    @Html.TextBoxFor(u => u.uyeEmail, new { @class = "form-control", placeholder = "Email adresi giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeAdres">Adres</label>
+                    @Html.TextBoxFor(u => u.uyeAdres, new { @class = "form-control", placeholder = "Adres giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="calistigiBirim">Çalıştığı Birim</label>
+                    @Html.TextBoxFor(u => u.calistigiBirim, new { @class = "form-control", placeholder = "Birim adı giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="unvan">Unvan</label>
+                    @Html.TextBoxFor(u => u.unvan, new { @class = "form-control", placeholder = "Unvan giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="isTelefonu">İş Telefonu</label>
+                    @Html.TextBoxFor(u => u.isTelefonu, new { @class = "form-control", placeholder = "İş telefon numarası giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="oduncNot">Notlar</label>
+                    @Html.TextBoxFor(u => u.oduncNot, new { @class = "form-control", placeholder = "Notlar giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fotograf">Fotoğraf Linki</label>
+                    @Html.TextBoxFor(u => u.fotograf, new { @class = "form-control", placeholder = "Fotoğraf linki giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeKullaniciAd">Kullanıcı Adı</label>
+                    @Html.TextBoxFor(u => u.uyeKullaniciAd, new { @class = "form-control", placeholder = "Kullanıcı adı giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="uyeSifre">Şifre</label>
+                    @Html.TextBoxFor(u => u.uyeSifre, new { @class = "form-control", placeholder = "Şifre giriniz" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-custom">Üye Bilgilerini Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

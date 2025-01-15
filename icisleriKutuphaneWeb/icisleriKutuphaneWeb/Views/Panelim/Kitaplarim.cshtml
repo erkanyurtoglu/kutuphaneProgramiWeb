@@ -1,0 +1,92 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBHAREKET>
+@{
+    ViewBag.Title = "Kitaplarım";
+    Layout = "~/Views/Shared/uyePanel.cshtml";
+}
+
+<!-- Sayfa başlığı -->
+<h2 class="page-title">Kitaplarım</h2>
+
+<!-- Tablo kapsayıcı -->
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Eser</th>
+                <th>Yazar</th>
+                <th>Demirbaş</th>
+                <th>Yayınlayan</th>
+                <th>Personel Ad Soyad</th>
+                <th>Alış Tarihi</th>
+                <th>Teslim Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in Model)
+            {
+                <tr>
+                    <td>@(k?.TBKITAP?.eser ?? "Veri Yok")</td>
+                    <td>@(k?.TBKITAP?.yazar ?? "Veri Yok")</td>
+                    <td>@(k?.TBKITAP?.demirbas ?? "Veri Yok")</td>
+                    <td>@(k?.TBKITAP?.yayinlayan ?? "Veri Yok")</td>
+                    <td>@(k?.TBPERSONEL?.personelAdSoyad ?? "Veri Yok")</td>
+                    <td>@(k?.alisTarih != null ? Convert.ToDateTime(k.alisTarih).ToString("dd/MM/yyyy") : "Veri Yok")</td>
+                    <td>@(k?.uyeGetirTarih != null ? Convert.ToDateTime(k.uyeGetirTarih).ToString("dd/MM/yyyy") : "Veri Yok")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfa stil düzenlemeleri -->
+<style>
+    /* Sayfa başlığı stili */
+    .page-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Tablo kapsayıcı stili */
+    .table-container {
+        width: 90%;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    /* Tablo stili */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1rem;
+        color: #333;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .table thead {
+            background-color: #f8f9fa;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:hover {
+            background-color: #e9ecef;
+        }
+</style>

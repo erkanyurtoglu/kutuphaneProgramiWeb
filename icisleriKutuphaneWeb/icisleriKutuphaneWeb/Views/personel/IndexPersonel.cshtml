@@ -1,0 +1,67 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBPERSONEL>
+@{
+    ViewBag.Title = "IndexPersonel";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<!-- Arama kutusu için form ekleyin -->
+<div style="margin-bottom:15px; margin-top:15px;">
+    @using (Html.BeginForm("IndexPersonel", "personel", FormMethod.Get))
+    {
+        <input type="text" name="search" class="form-control" placeholder="Aramak istediğiniz personel bilgisini giriniz..." value="@Request.QueryString["search"]" />
+        <button type="submit" class="btn btn-primary" style="margin-top:5px;">Ara</button>
+    }
+</div>
+
+<!-- Personel Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle text-center" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3">Ad Soyad</th>
+                <th class="p-3">T.C. Kimlik Numarası</th>
+                <th class="p-3">Telefon Numarası</th>
+                <th class="p-3">Email Adres</th>
+                <th class="p-3">Adres</th>
+                <th class="p-3">Unvan</th>
+                <th class="p-3">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personel in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3">@personel.personelAdSoyad</td>
+                    <td class="p-3">@personel.personelTcNumarasi</td>
+                    <td class="p-3">@personel.personelTelefon</td>
+                    <td class="p-3">@personel.personelEmail</td>
+                    <td class="p-3">@personel.personelAdres</td>
+                    <td class="p-3">@personel.personelUnvan</td>
+                    <td class="p-3">
+                        <a href="@Url.Action("personelGetir", "personel", new { personelTcNumarasi = personel.personelTcNumarasi })" class="btn btn-info btn-sm me-2 shadow rounded-pill">
+                            <i class="bi bi-pencil-square"></i> Güncelle
+                        </a>
+                        <a href="@Url.Action("personelSil", "personel", new { personelTcNumarasi = personel.personelTcNumarasi })" class="btn btn-danger btn-sm shadow rounded-pill">
+                            <i class="bi bi-trash"></i> Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexPersonel", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<a href="@Url.Action("personelEkle", "personel")" class="btn btn-primary">Yeni Personel Ekle</a>

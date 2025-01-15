@@ -1,0 +1,140 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBKITAP>
+
+@{
+    ViewBag.Title = "IndexKitap";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<!-- Arama kutusu için form ekleyin -->
+<div style="margin-bottom:15px; margin-top:15px;">
+    @using (Html.BeginForm("IndexKitap", "kitap", FormMethod.Get))
+    {
+        <input type="text" name="search" class="form-control" placeholder="Aramak istediğiniz kitap bilgisini giriniz..." value="@ViewBag.SearchTerm" />
+        <button type="submit" class="btn btn-primary" style="margin-top:5px;">Ara</button>
+    }
+</div>
+
+<!-- Kitaplar Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle text-center" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "eser", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Eser
+                        @if (ViewBag.SortColumn == "eser")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "yazar", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Yazar
+                        @if (ViewBag.SortColumn == "yazar")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "demirbas", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Demirbaş
+                        @if (ViewBag.SortColumn == "demirbas")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "isbn", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        ISBN
+                        @if (ViewBag.SortColumn == "isbn")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "yayinYeri", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Yayın Yeri
+                        @if (ViewBag.SortColumn == "yayinYeri")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "yayinlayan", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Yayınlayan
+                        @if (ViewBag.SortColumn == "yayinlayan")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">
+                    <a href="@Url.Action("IndexKitap", new { sortColumn = "durum", sortOrder = ViewBag.SortOrder == "asc" ? "desc" : "asc", search = ViewBag.SearchTerm })">
+                        Durum
+                        @if (ViewBag.SortColumn == "durum")
+                        {
+                            <i class="bi @(ViewBag.SortOrder == "asc" ? "bi-caret-up-fill" : "bi-caret-down-fill")"></i>
+                        }
+                    </a>
+                </th>
+                <th class="p-3">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kitap in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3">@kitap.eser</td>
+                    <td class="p-3">@kitap.yazar</td>
+                    <td class="p-3">@kitap.demirbas</td>
+                    <td class="p-3">@kitap.isbn</td>
+                    <td class="p-3">@kitap.yayinYeri</td>
+                    <td class="p-3">@kitap.yayinlayan</td>
+                    <td class="p-3">
+                        @if (kitap.durum == true)
+                        {
+                            <span class="badge bg-success p-2 rounded-pill">Mevcut</span>
+                        }
+                        else if (kitap.durum == false)
+                        {
+                            <span class="badge bg-danger p-2 rounded-pill">Emanet</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning p-2 rounded-pill">Mevcut, Yeni Kitap</span>
+                        }
+                    </td>
+
+                    <td class="p-3">
+                        <a href="@Url.Action("kitapGetir", "kitap", new { demirbas = kitap.demirbas })" class="btn btn-info btn-sm me-2 shadow rounded-pill">
+                            <i class="bi bi-pencil-square"></i> Detay
+                        </a>
+                        <a href="@Url.Action("kitapSil", "kitap", new { demirbas = kitap.demirbas })" class="btn btn-danger btn-sm shadow rounded-pill">
+                            <i class="bi bi-trash"></i> Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("IndexKitap", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<a href="@Url.Action("kitapEkle", "kitap")" class="btn btn-primary">Yeni Kitap Ekle</a>

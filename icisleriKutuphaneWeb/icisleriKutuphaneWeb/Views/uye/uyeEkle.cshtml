@@ -1,0 +1,162 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBUYELER
+@{
+    ViewBag.Title = "uyeEkle";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    .form-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f4f4f9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ced4da;
+    }
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #191862;
+        font-weight: bold;
+    }
+
+    .btn-custom {
+        background-color: #191862;
+        color: white;
+        border-radius: 10px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #4448a1;
+        }
+</style>
+
+<div class="form-container">
+    <h2 class="form-title">Yeni Üye Ekle</h2>
+    @using (Html.BeginForm("uyeEkle", "uye", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeAdSoyad, "Ad Soyad")
+                    @Html.TextBoxFor(u => u.uyeAdSoyad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeAdSoyad)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeTcNumarasi, "T.C. Kimlik Numarası")
+                    @Html.TextBoxFor(u => u.uyeTcNumarasi, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeTcNumarasi)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeTelefon, "Telefon Numarası")
+                    @Html.TextBoxFor(u => u.uyeTelefon, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeTelefon)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeEmail, "Email")
+                    @Html.TextBoxFor(u => u.uyeEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeEmail)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeAdres, "Adres")
+                    @Html.TextBoxFor(u => u.uyeAdres, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeAdres)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.calistigiBirim, "Çalıştığı Birim")
+                    @Html.TextBoxFor(u => u.calistigiBirim, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.calistigiBirim)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.unvan, "Unvan")
+                    @Html.TextBoxFor(u => u.unvan, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.unvan)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.isTelefonu, "İş Telefonu")
+                    @Html.TextBoxFor(u => u.isTelefonu, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.isTelefonu)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.fotograf, "Fotoğraf")
+                    @Html.TextBoxFor(u => u.fotograf, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.fotograf)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.oduncNot, "Notlar")
+                    @Html.TextBoxFor(u => u.oduncNot, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.oduncNot)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeKullaniciAd, "Kullanıcı Adı")
+                    @Html.TextBoxFor(u => u.uyeKullaniciAd, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeKullaniciAd)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(u => u.uyeSifre, "Şifre")
+                    @Html.TextBoxFor(u => u.uyeSifre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.uyeSifre)
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-custom">Üye Ekle</button>
+        </div>
+    }
+</div>

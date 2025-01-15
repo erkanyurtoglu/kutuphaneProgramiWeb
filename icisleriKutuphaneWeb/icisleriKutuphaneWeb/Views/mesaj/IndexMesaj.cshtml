@@ -1,0 +1,173 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBMESAJ>
+@{
+    ViewBag.Title = "IndexMesaj";
+    Layout = "~/Views/Shared/uyePanel.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Mailbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <!-- Main Sidebar Container -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            @Html.Action("Partial1")
+
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Gelen Kutusu</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="Mail Ara:">
+                                <div class="input-group-append">
+                                    <div class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="far fa-square"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                            <div class="float-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                    <tr data-toggle="modal" data-target="#messageModal" 
+                                        data-sender="@x.gonderen" 
+                                        data-subject="@x.konu" 
+                                        data-date="@x.tarih" 
+                                        data-content="@x.icerik">
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="" id="check@x.Id">
+                                                <label for="check@x.Id"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="#">@x.gonderen</a></td>
+                                        <td class="mailbox-subject"><b>@x.konu</b></td>
+                                        <td class="mailbox-attachment">@x.icerik</td>
+                                        <td class="mailbox-date">@x.tarih</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer p-0">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="far fa-square"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                            <div class="float-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Mesaj Detayı</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Gönderen:</strong> <span id="modalSender"></span></p>
+                    <p><strong>Konu:</strong> <span id="modalSubject"></span></p>
+                    <p><strong>Tarih:</strong> <span id="modalDate"></span></p>
+                    <p><strong>İçerik:</strong> <span id="modalContent"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+
+    <!-- Page Script -->
+    <script>
+    $(document).ready(function(){
+        $('#messageModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Mesaj satırına tıklanan
+            var sender = button.data('sender'); // Gönderen
+            var subject = button.data('subject'); // Konu
+            var date = button.data('date'); // Tarih
+            var content = button.data('content'); // İçerik
+
+            // Modal içeriğini güncelle
+            var modal = $(this);
+            modal.find('#modalSender').text(sender);
+            modal.find('#modalSubject').text(subject);
+            modal.find('#modalDate').text(date);
+            modal.find('#modalContent').text(content);
+        });
+    });
+    </script>
+</body>
+</html>

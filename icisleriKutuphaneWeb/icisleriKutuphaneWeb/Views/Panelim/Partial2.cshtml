@@ -1,0 +1,112 @@
+﻿@model icisleriKutuphaneWeb.Models.Entity.TBUYELER
+
+@using (Html.BeginForm("IndexPanelim", "Panelim", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Ad Soyad -->
+    <div class="form-group row">
+        <label for="uyeAdSoyad" class="col-sm-2 col-form-label">Ad Soyad</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeAdSoyad, new { @class = "form-control", id = "uyeAdSoyad" })
+        </div>
+    </div>
+
+    <!-- T.C. Kimlik Numarası -->
+    <div class="form-group row">
+        <label for="uyeTcNumarasi" class="col-sm-2 col-form-label">T.C. Kimlik Numarası</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeTcNumarasi, new { @class = "form-control", id = "uyeTcNumarasi", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <!-- Telefon -->
+    <div class="form-group row">
+        <label for="uyeTelefon" class="col-sm-2 col-form-label">Telefon</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeTelefon, new { @class = "form-control", id = "uyeTelefon" })
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group row">
+        <label for="uyeEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeEmail, new { @class = "form-control", id = "uyeEmail" })
+        </div>
+    </div>
+
+    <!-- Adres -->
+    <div class="form-group row">
+        <label for="uyeAdres" class="col-sm-2 col-form-label">Adres</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeAdres, new { @class = "form-control", id = "uyeAdres" })
+        </div>
+    </div>
+
+    <!-- Çalıştığı Birim -->
+    <div class="form-group row">
+        <label for="calistigiBirim" class="col-sm-2 col-form-label">Çalıştığı Birim</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.calistigiBirim, new { @class = "form-control", id = "calistigiBirim" })
+        </div>
+    </div>
+
+    <!-- Unvan -->
+    <div class="form-group row">
+        <label for="unvan" class="col-sm-2 col-form-label">Unvan</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.unvan, new { @class = "form-control", id = "unvan" })
+        </div>
+    </div>
+
+    <!-- İş Telefonu -->
+    <div class="form-group row">
+        <label for="isTelefonu" class="col-sm-2 col-form-label">İş Telefonu</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.isTelefonu, new { @class = "form-control", id = "isTelefonu" })
+        </div>
+    </div>
+
+    <!-- Fotoğraf -->
+    <div class="form-group row">
+        <label for="fotograf" class="col-sm-2 col-form-label">Fotoğraf</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.fotograf, new { @class = "form-control", id = "fotograf", type = "file" })
+        </div>
+    </div>
+
+    <!-- Kullanıcı Ad -->
+    <div class="form-group row">
+        <label for="uyeKullaniciAd" class="col-sm-2 col-form-label">Kullanıcı Ad</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.uyeKullaniciAd, new { @class = "form-control", id = "uyeKullaniciAd", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <!-- Şifre -->
+    <div class="form-group row">
+        <label for="uyeSifre" class="col-sm-2 col-form-label">Şifre</label>
+        <div class="col-sm-10">
+            @Html.PasswordFor(x => x.uyeSifre, new { @class = "form-control", id = "uyeSifre" })
+        </div>
+    </div>
+
+    <!-- Şartlar -->
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" required> Şartları okudum <a href="#">kabul ediyorum</a>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Güncelle Butonu -->
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-danger">Güncelle</button>
+        </div>
+    </div>
+}

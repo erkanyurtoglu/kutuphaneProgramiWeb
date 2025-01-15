@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewBag.Title = "Indexistatistik";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<h2>İstatistik Sayfası</h2>
+
+<link href="~/web2/css/bootstrap.css" rel="stylesheet" />
+<link href="~/web2/css/style.css" rel="stylesheet" />
+<script src="~/web2/js/Chart1.js"></script>
+<script src="~/web2/js/jquery.min.js"></script>
+<script src="~/web2/js/jquery.vmap.js"></script>
+<script src="~/web2/js/jquery.vmap.sampledata.js"></script>
+<script src="~/web2/js/jquery.vmap.world.js"></script>
+<link href="~/web2/css/jqvmap.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function (c) {
+        $('.alert-close6').on('click', function (c) {
+            $('.world-map').fadeOut('slow', function (c) {
+                $('.world-map').remove();
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: '#333333',
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: ['#C8EEFF', '#006491'],
+            normalizeFunction: 'polynomial'
+        });
+    });
+</script>
+
+<div class="list_of_members">
+    <div class="new-users">
+        <div class="icon">
+            <i class="user1"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr1</h3>
+            <p>Toplam Üye</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="new-users">
+        <div class="icon">
+            <i class="user1"></i>
+        </div>
+        <div class="icon-text">
+            <h3>246</h3>
+            <p>Günlük Ziyaretçi</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="orders">
+        <div class="icon">
+            <i class="order"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr2</h3>
+            <p>Toplam Kitap</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="visitors">
+        <div class="icon">
+            <i class="visit"></i>
+        </div>
+        <div class="icon-text">
+            <h3>@ViewBag.dgr3</h3>
+            <p>Emanet Kitap</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="total-sales">
+    <div class="user-trends">
+        <div class="alert-close7"> </div>
+
+        <canvas id="bar" height="340" width="780"></canvas>
+        <script>
+
+            var barChartData = {
+                labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"],
+                datasets: [
+                    {
+                        fillColor: "rgba(204, 0, 0, 1)",
+                        strokeColor: "rgba(204, 0, 0, 1)",
+                        data: [65, 59, 90, 81, 56, 55, 40]
+                    },
+                    {
+                        fillColor: "rgba(19, 24, 62)",
+                        strokeColor: "rgba(19, 24, 62)",
+                        data: [28, 48, 40, 19, 96, 27, 100]
+                    }
+                ]
+
+            }
+
+            var myLine = new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+
+        </script>
+    </div>
+    <div class="to-do">
+        <div class="alert-close5"> </div>
+        <h3>Günlük Yapılacaklar Listesi</h3>
+        <div class="checkbox-form">
+            <div class="check">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Emanet Kitap Kontrolü</label>
+            </div>
+            <div class="check">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Ziyaretçi Defter Kontrolü</label>
+            </div>
+            <div class="check">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Evrak İşleri Tamamlanması</label>
+            </div>
+            <div class="check">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Yeni Kitap Girişi</label>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="total-world">
+    <div class="world-map">
+        <div class="alert-close6"> </div>
+        <h3>Dünya Haritası</h3>
+        <p><span class="color1"></span>40%<span class="color2"></span>12%<span class="color3"></span>11%<span class="color4"></span>10%<span class="color5"></span>18%</p>
+        <div class="clearfix"></div>
+        <div id="vmap" style="width: 600px; height: 400px;"></div>
+    </div>
+    <div class="site-report">
+        <div class="alert-close3"> </div>
+        <h3>Sistem Raporları</h3>
+        <div class="skills-top">
+            <h5>Memnuniyet</h5>
+            <h4>96%</h4>
+            <div class="clearfix"></div>
+            <div class="skills">
+                <div class="skill" style="width:45%"></div>
+            </div>
+        </div>
+        <div class="skills-top">
+            <h5>Hijyen</h5>
+            <h4>99%</h4>
+            <div class="clearfix"></div>
+            <div class="skills">
+                <div class="skill1" style="width:68%"></div>
+            </div>
+        </div>
+        <div class="skills-top">
+            <h5>Haftalık Geri Dönüş</h5>
+            <h4>89%</h4>
+            <div class="clearfix"></div>
+            <div class="skills">
+                <div class="skill2" style="width:89%"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hata - Sayfa Bulunamadı</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+            .error-container h1 {
+                font-size: 100px;
+                margin: 0;
+                font-weight: 700;
+                color: #ff6b6b;
+            }
+
+            .error-container h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .error-container p {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .error-container .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                margin: 10px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #fff;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+            .error-container .btn-home {
+                background-color: #007bff;
+            }
+
+                .error-container .btn-home:hover {
+                    background-color: #0056b3;
+                }
+
+            .error-container .btn-back {
+                background-color: #6c757d;
+            }
+
+                .error-container .btn-back:hover {
+                    background-color: #5a6268;
+                }
+
+            .error-container i {
+                font-size: 50px;
+                margin-bottom: 20px;
+                color: #ff6b6b;
+            }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h1>404</h1>
+        <h2>Sayfa Bulunamadı</h2>
+        <p>Üzgünüz, aradığınız sayfa bulunamadı. Lütfen aşağıdaki seçeneklerden birini kullanarak devam edin.</p>
+        <a href="/vitrin/IndexVitrin/" class="btn btn-home"><i class="fas fa-home"></i> Ana Sayfa</a>
+        <a href="javascript:history.back()" class="btn btn-back"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+    </div>
+</body>
+</html>
+

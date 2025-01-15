@@ -1,0 +1,63 @@
+﻿@using icisleriKutuphaneWeb.Models.Entity
+@model List<TBHAREKET>
+@{
+    ViewBag.Title = "Indexislem";
+    Layout = "~/Views/Shared/icisleriLayout.cshtml";
+}
+
+<!-- Kitaplar Tablosu -->
+<div class="table-responsive shadow-lg">
+    <table class="table table-hover table-striped align-middle text-center" style="border-collapse: separate; border-spacing: 0 15px;">
+        <thead class="table-dark">
+            <tr>
+                <th class="p-3">Eser</th>
+                <th class="p-3">Yazar</th>
+                <th class="p-3">Demirbaş</th>
+                <th class="p-3">Yayınlayan</th>
+                <th class="p-3">Üye Ad Soyad</th>
+                <th class="p-3">Üye T.C Numarası</th>
+                <th class="p-3">Üye Telefon</th>
+                <th class="p-3">Personel Ad Soyad</th>
+                <th class="p-3">Personel Telefon</th>
+                <th class="p-3">Alış Tarihi</th>
+                <th class="p-3">Teslim Tarihi</th>
+                <th class="p-3">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var k in Model)
+            {
+                <tr class="bg-white shadow-sm rounded">
+                    <td class="p-3">@k.TBKITAP.eser</td>
+                    <td class="p-3">@k.TBKITAP.yazar</td>
+                    <td class="p-3">@k.TBKITAP.demirbas</td>
+                    <td class="p-3">@k.TBKITAP.yayinlayan</td>
+                    <td class="p-3">@k.TBUYELER.uyeAdSoyad</td>
+                    <td class="p-3">@k.TBUYELER.uyeTcNumarasi</td>
+                    <td class="p-3">@k.TBUYELER.uyeTelefon</td>
+                    <td class="p-3">@k.TBPERSONEL.personelAdSoyad</td>
+                    <td class="p-3">@k.TBPERSONEL.personelTelefon</td>
+                    <td class="p-3">@Convert.ToDateTime(k.alisTarih).ToString("dd/MM/yyyy")</td>
+                    <td class="p-3">@Convert.ToDateTime(k.uyeGetirTarih).ToString("dd/MM/yyyy")</td>
+                    <td class="p-3">
+                        <a href="@Url.Action("odunciade", "odunc", new { id = k.ID })" class="btn btn-info btn-sm me-2 shadow rounded-pill">
+                            <i class="bi bi-pencil-square"></i> Detaylar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Sayfalama Linkleri -->
+<nav aria-label="Sayfalama">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Indexislem", new { page = i, search = ViewBag.SearchTerm })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
